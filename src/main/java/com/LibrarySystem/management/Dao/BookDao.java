@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.LibrarySystem.management.Entity.Books;
+import com.LibrarySystem.management.Exceptions.ResourceNotFoundException;
 import com.LibrarySystem.management.Repository.BookRepository;
 import com.LibrarySystem.management.Utils.DateUtil;
 
@@ -28,6 +29,10 @@ public BookDao(BookRepository bookRepo) {
     public List<Books> getAllBooks(){
     	List<Books> bookList= bookRepo.findAll();
     	return bookList;
+    }
+    
+    public Books getBookById(int id) {    	
+    	return bookRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Enter a valid Id"));
     }
     
  

@@ -22,4 +22,8 @@ public class BookSvc {
 	public List<Books> getAllBooks(){
 		return bookDao.getAllBooks();
 	}
+	
+	public Books getBookById(int id) {
+		return bookDao.getBookById(id);
+	}
 }
